@@ -1,0 +1,2 @@
+$(SRCROOT)/Carthage/Build/iOS/SbankenClient.framework
+$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework

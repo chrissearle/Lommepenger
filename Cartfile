@@ -1,0 +1,3 @@
+github "chrissearle/sbankenclient-ios" "transactiondecode"
+github "jrendel/SwiftKeychainWrapper" ~> 3.3
+
