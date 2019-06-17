@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         guard let startDate = Calendar.current.date(
             byAdding: .month,
-            value: -1,
+            value: -3,
             to: Date()) else {
                 return
         }
