@@ -82,13 +82,17 @@ class SettingsViewController : UIViewController, UITableViewDataSource, UITableV
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
                 }
-            }) { (error) in
+            }) { (error, errorString) in
                 self.clearSpinner(self.spinner)
 
-                if let err = error {
-                    print(err)
+                if let error = error {
+                    print("Unable to fetch accounts \(error)")
                 } else {
                     print("An unknown error occured")
+                }
+                
+                if let errorString = errorString {
+                    print("Unable to fetch accounts reason \(errorString)")
                 }
             }
         }

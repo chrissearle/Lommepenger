@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         client.accounts(userId: userID, success: { (accs) in
             self.clearSpinner(self.spinner)
-
+            
             let account = accs.filter { $0.accountId == accountID }.first
             
             if let account = account {
@@ -51,17 +51,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     self.getAccountTransactions(account.accountId, client: client, userID: userID)
                 }
             }
-        }) { (err) in
+        }) { (error, errorString) in
             self.clearSpinner(self.spinner)
 
-            if let error = err {
+            if let error = error {
                 print("Unable to get account \(error)")
+            }
+            
+            if let errorString = errorString {
+                print("Unable to get account reason \(errorString)")
+            }
+
+            DispatchQueue.main.async {
+                self.alertPopup(title: "En feil har oppstått", message: "Kunne ikke hente konto")
                 
-                DispatchQueue.main.async {
-                    self.alertPopup(title: "En feil har oppstått", message: "Kunne ikke hente konto")
-                
-                    return
-                }
+                return
             }
         }
     }
